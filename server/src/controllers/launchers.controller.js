@@ -9,7 +9,7 @@ export async function addLauncher(req, res) {
             })
         }
 
-        const launcher = createLauncher({
+        const launcher = await createLauncher({
             name, city, rocketType, latitude, longitude
         })
         res.status(201).json({
