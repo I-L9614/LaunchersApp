@@ -1,4 +1,4 @@
-import { getDB } from "../db/mongo";
+import { getDB } from "../db/mongo.js";
 import { ObjectId } from "mongodb";
 
 export async function createLauncher({ name, city, rocketType, latitude, longitude }) {
@@ -43,4 +43,11 @@ export async function getLauncherById(id) {
         throw new Error("Launcher not found")
     }
     return launcher
+}
+
+export async function deleteLauncher(id) {
+    const db = getDB()
+    const launchers = db.collection('launchers')
+    const launcherDelete = await launchers.deleteOne({ _id: new ObjectId(id) })
+    return
 }

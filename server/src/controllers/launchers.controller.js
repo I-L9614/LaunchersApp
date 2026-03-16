@@ -33,3 +33,15 @@ export async function getAllLaunchers(req, res) {
     }
 }
 
+export async function getOneLauncher(req, res) {
+    try {
+        const launcher = await getLauncherById(req.params.id)
+        res.status(200).json({launcher})
+    } catch( error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export async function deleteOneLauncher(req,res) {
+    
+}
