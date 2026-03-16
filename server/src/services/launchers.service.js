@@ -16,9 +16,31 @@ export async function createLauncher({ name, city, rocketType, latitude, longitu
     })
 
     return {
-        id: insertedId.toString(),
+        id: addLauncher.insertedId,
         name,
         city,
         rocketType
     }
+}
+
+export async function getLaunchers() {
+    const db = getDB()
+    const launchersCollection = db.collection('launchers')
+    const launchers = await launchersCollection.find({}).toArray()
+
+    return launchers.map((launcher) => ({
+        id: launcher._id,
+        name: launcher.name,
+        city: launcher.city
+    }))
+}
+
+export async function getLauncherById(id) {
+    const db = getDB()
+    const launchers = await db.collection('launchers')
+    const launcher = await launchers.findOne({_id: new ObjectId(id)})
+    if (!launcher) {
+        throw new Error("Launcher not found")
+    }
+    return launcher
 }

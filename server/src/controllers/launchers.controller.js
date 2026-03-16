@@ -1,4 +1,4 @@
-import { createLauncher } from '../services/launchers.service.js'
+import { createLauncher, getLaunchers, getLauncherById } from '../services/launchers.service.js'
 
 export async function addLauncher(req, res) {
     try {
@@ -21,3 +21,15 @@ export async function addLauncher(req, res) {
         })
     }
 }
+
+export async function getAllLaunchers(req, res) {
+    try {
+        const launchers = await getLaunchers()
+        res.status(200).json({ launchers })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
