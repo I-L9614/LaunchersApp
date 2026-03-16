@@ -31,7 +31,8 @@ export async function getLaunchers() {
     return launchers.map((launcher) => ({
         id: launcher._id,
         name: launcher.name,
-        city: launcher.city
+        city: launcher.city,
+        rocketType: launcher.rocketType
     }))
 }
 
