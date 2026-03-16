@@ -51,3 +51,4 @@ export async function deleteLauncher(id) {
     const launcherDelete = await launchers.deleteOne({ _id: new ObjectId(id) })
     return
 }
+

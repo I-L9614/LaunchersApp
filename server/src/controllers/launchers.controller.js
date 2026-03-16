@@ -1,4 +1,4 @@
-import { createLauncher, getLaunchers, getLauncherById } from '../services/launchers.service.js'
+import { createLauncher, getLaunchers, getLauncherById, deleteLauncher } from '../services/launchers.service.js'
 
 export async function addLauncher(req, res) {
     try {
@@ -43,5 +43,14 @@ export async function getOneLauncher(req, res) {
 }
 
 export async function deleteOneLauncher(req,res) {
-    
-}
+    try {
+        const launcherDelete = await deleteLauncher(req.params.id)
+        res.status(200).json({
+            message: "launcher deleted"
+        })
+    } catch (error) {   
+        res.status(500).json({
+            message: error.message
+        })
+    }
+} 
