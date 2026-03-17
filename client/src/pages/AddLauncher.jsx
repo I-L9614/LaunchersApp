@@ -52,10 +52,10 @@ function AddLauncher() {
         <div className='form-group'>
             <label>Rocket Type</label>
             <select value={rocketType} onChange={(e) => setRocketType(e.target.value)} >
-                <option value="shahab3">Shahab3</option>
-                <option value="fetah110">Fetah110</option>
-                <option value="radwan">radwan</option>
-                <option value="kheibar">Kheibar</option>
+                <option value="Shahab3">Shahab3</option>
+                <option value="Fetah110">Fetah110</option>
+                <option value="Radwan">radwan</option>
+                <option value="Kheibar">Kheibar</option>
             </select>               
         </div>
         <div className='form-group'>
