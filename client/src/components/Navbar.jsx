@@ -14,7 +14,16 @@ function Navbar() {
         <Link to="/create-launcher">
             Add Launcher
         </Link>
+        <Link to='/users'>
+            Users
+        </Link>
+        
       </div>
+      <button className='logout'>
+        <Link to='/login' replace>
+          Logout
+        </Link>
+      </button>
     </div>
   )
 }

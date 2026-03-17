@@ -1,3 +1,4 @@
+import api from '../api/axios.js'
 import { useEffect, useState } from 'react'
 import Launcher from '../components/Launcher.jsx'
 import { Link } from 'react-router-dom'
@@ -9,11 +10,11 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const respons = await fetch("http://localhost:5000/api/launchers")
-                if (!respons.ok) {
+                const respons = await api('/launchers')
+                if (!respons.data) {
                     throw new Error("HTTP error")
                 }
-                const result = await respons.json()
+                const result = await respons.data
                 setData(result.launchers)
             } catch(error) {
                 setError(error.message)
