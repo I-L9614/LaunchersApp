@@ -50,6 +50,18 @@ export async function deleteLauncher(id) {
     const db = getDB()
     const launchers = db.collection('launchers')
     const launcherDelete = await launchers.deleteOne({ _id: new ObjectId(id) })
-    return
+    if(!launcherDelete) {
+        throw new Error('launcher not found')
+    }
 }
 
+export async function updateOneLauncher(id) {
+    const db = getDB()
+    const launchers = db.collection('launchers')
+
+    const updateLauncher = await launchers.updateOne({_id: new ObjectId(id)}, {$set: {destroied: true}})
+    if(!updateLauncher) {
+        throw new Error('launcher not found')
+    }
+    return updateLauncher
+}
